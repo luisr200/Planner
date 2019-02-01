@@ -14,10 +14,6 @@ export class ExpensesComponent implements OnInit {
     }
 
     expenses: Expense[];
-    selectedExpense: Expense;
-    onSelect(expense: Expense): void {
-        this.selectedExpense = expense;
-    }
 
     ngOnInit() {
         this.getHeroes();

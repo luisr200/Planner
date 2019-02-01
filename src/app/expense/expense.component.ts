@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { ExpenseService }  from '../expense.service';
 import { Expense } from '../expense';
 
 @Component({
@@ -10,9 +13,24 @@ export class ExpenseComponent implements OnInit {
 
   @Input() expense: Expense;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private expenseService: ExpenseService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
+    this.getExpense();
+  }
+
+  getExpense(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.expenseService.getExpense(id)
+    .subscribe(expense => this.expense = expense);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
