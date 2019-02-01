@@ -1,0 +1,16 @@
+<div *ngIf="expense">
+    <span>id: 
+
+    </span>{{expense.id}}
+    <div>
+    <label>Title:
+        <input [(ngModel)]="expense.title" placeholder="title">
+    </label>
+    <label>Amount:
+        <input [(ngModel)]="expense.amount" placeholder="amount">
+    </label>
+    <label>Type:
+        <input [(ngModel)]="expense.type" placeholder="type">
+    </label>
+    </div>
+</div>

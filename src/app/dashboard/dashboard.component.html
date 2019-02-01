@@ -1,0 +1,11 @@
+<p>
+  dashboard works!
+</p>
+<h3>Top Expenses</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let expense of expenses" class="col-1-4">
+    <div class="module expense">
+      <h4>{{expense.title}}</h4>
+    </div>
+  </a>
+</div>
