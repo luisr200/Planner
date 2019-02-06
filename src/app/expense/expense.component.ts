@@ -33,4 +33,9 @@ export class ExpenseComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.expenseService.updateExpense(this.expense)
+      .subscribe(() => this.goBack());
+  }
+
 }

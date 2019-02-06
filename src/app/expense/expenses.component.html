@@ -1,8 +1,24 @@
 <h2>My Expenses</h2>
+<div>
+  <label>Expense title:
+    <input #expenseTitle />
+  </label>
+  <label>Expense amount:
+    <input #expenseAmount />
+  </label>
+  <label>Expense type:
+    <input #expenseType />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(expenseTitle.value,expenseAmount.value,expenseType.value); expenseTitle.value='';expenseAmount.value='';expenseType.value=''">
+    add
+  </button>
+</div>
 <ul class="expenses">
   <li *ngFor="let expense of expenses">
       <a routerLink="/expense/{{expense.id}}">
         <span class="badge">{{expense.id}}</span> {{expense.title}} {{expense.amount}} {{expense.type}}
       </a>
+      <button class="delete" title="delete expense" (click)="delete(expense)">x</button>
   </li>
 </ul>
