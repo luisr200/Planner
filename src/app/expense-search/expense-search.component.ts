@@ -4,7 +4,7 @@ import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
  import { Expense } from '../expense'
- import { ExpenseService } from '../expense.service'
+ import { ExpenseService } from '../services/expense.service'
 
 @Component({
   selector: 'app-expense-search',

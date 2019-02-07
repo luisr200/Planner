@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ExpenseService } from '../expense.service';
+import { ExpenseService } from '../services/expense.service';
 import { Expense } from '../expense';
-import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
 @Component({
   selector: 'app-expenses',

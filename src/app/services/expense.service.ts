@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Expense } from './expense'
-import { EXPENSES } from './mock-expenses'
+import { Expense } from '../expense'
+import { EXPENSES } from '../mock-expenses'
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of, empty } from 'rxjs';
 import { MessageService } from './message.service';

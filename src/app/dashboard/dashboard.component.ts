@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from '../expense';
-import { ExpenseService } from '../expense.service';
+import { ExpenseService } from '../services/expense.service';
 
 @Component({
   selector: 'app-dashboard',
