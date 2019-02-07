@@ -1,10 +1,10 @@
 <h3>Top Expenses</h3>
 <div class="grid grid-pad">
-  <a mat-raised-button *ngFor="let expense of expenses" class="col-1-4" routerLink="/expense/{{expense.id}}">
+  <button mat-stroked-button color="accent" *ngFor="let expense of expenses" class="col-1-4" routerLink="/expense/{{expense.id}}">
     <div class="module expense">
       <h4>{{expense.title}}</h4>
     </div>
-  </a>
+  </button>
 </div>
 
 <app-expense-search></app-expense-search>

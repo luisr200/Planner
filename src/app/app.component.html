@@ -1,7 +1,19 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/expenses">Expenses</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<section class="mat-typography">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <i class="material-icons">account_box</i>
+            <span>Account</span>
+        </button>
+      </mat-menu>
+  <h1>{{title}}</h1>
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/expenses">Expenses</a>
+  </nav>
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+</section>
+
