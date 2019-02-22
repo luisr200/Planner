@@ -12,7 +12,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './services/in-memory-data.service';
 import { ExpenseSearchComponent } from './expense-search/expense-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import{ MaterialModule } from './material'
+import { MaterialModule } from './material';
+import { IncomeComponent } from './income/income.component';
+import { IncomesComponent } from './incomes/incomes.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import{ MaterialModule } from './material'
     ExpensesComponent,
     MessagesComponent,
     DashboardComponent,
-    ExpenseSearchComponent
+    ExpenseSearchComponent,
+    IncomeComponent,
+    IncomesComponent
   ],
   imports: [
     BrowserModule,
