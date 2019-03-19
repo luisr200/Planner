@@ -1,14 +1,38 @@
-<mat-drawer-container class="example-container">
+<!-- <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
       <nav>
         <a routerLink="/dashboard">Dashboard</a>
-        <a routerLink="/expenses">Expenses</a>
+        <a routerLink="/expense">Expenses</a>
+        <a routerLink="/income">Income</a>
       </nav>
   </mat-drawer>
   <mat-drawer-content>
       <h1>{{title}}</h1>
-      <router-outlet></router-outlet>
-      <app-messages></app-messages>
+
   </mat-drawer-content>
 </mat-drawer-container>
+ -->
 
+ <div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/expense">Expenses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/income">Income</a>
+            </li>
+          </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <router-outlet></router-outlet>
+        <app-messages></app-messages>
+    </div>
+  </div>
+ </div>

@@ -9,7 +9,7 @@ import { Expense } from '../expense';
 })
 export class ExpensesComponent implements OnInit {
 
-    constructor(private expenseService: ExpenseService) { 
+    constructor(private expenseService: ExpenseService) {
     }
 
     expenses: Expense[];
@@ -20,7 +20,7 @@ export class ExpensesComponent implements OnInit {
 
     getHeroes(): void{
         this.expenseService.getExpenses()
-        .subscribe(expenses => this.expenses = expenses)
+        .subscribe(expenses => this.expenses = expenses);
     }
 
     add(title: string, amount: number, type: string): void {

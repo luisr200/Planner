@@ -22,7 +22,6 @@ export class IncomeService {
   getIncomes(): Observable<Income[]> {
     return this.http.get<Income[]>(this.incomesUrl)
     .pipe(
-      //tap(_ => this.log('fetched Incomes')),
       catchError(this.handleError('getIncomes', []))
     );
   }
@@ -42,7 +41,7 @@ export class IncomeService {
       catchError(this.handleError<any>('updateIncome'))
     );
   }
-  
+
   /** POST: add a new hero to the server */
   addIncome (income: Income): Observable<Income> {
     return this.http.post<Income>(this.incomesUrl, income, httpOptions).pipe(

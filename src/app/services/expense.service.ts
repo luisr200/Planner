@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Expense } from '../expense'
-import { EXPENSES } from '../mock-expenses'
+import { Expense } from '../expense';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of, empty } from 'rxjs';
 import { MessageService } from './message.service';
@@ -23,7 +22,8 @@ export class ExpenseService {
   getExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>(this.expensesUrl)
     .pipe(
-      //tap(_ => this.log('fetched expenses')),
+      //map((inc) => inc.forEach((a) =>  parseInt(a.amount))),
+       //tap(_ => this.log('fetched expenses')),
       catchError(this.handleError('getExpenses', []))
     );
   }
@@ -43,7 +43,7 @@ export class ExpenseService {
       catchError(this.handleError<any>('updateExpense'))
     );
   }
-  
+
   /** POST: add a new hero to the server */
   addExpense (expense: Expense): Observable<Expense> {
     return this.http.post<Expense>(this.expensesUrl, expense, httpOptions).pipe(
