@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { ExpenseService }  from '../services/expense.service';
+import { ExpenseService } from '../services/expense.service';
 import { Expense } from '../expense';
 
 @Component({
@@ -11,7 +11,7 @@ import { Expense } from '../expense';
 })
 export class ExpenseComponent implements OnInit {
 
-  @Input() expense: Expense;
+  expense: Expense;
 
   constructor(
     private route: ActivatedRoute,

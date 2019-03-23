@@ -22,8 +22,10 @@ export class ExpenseService {
   getExpenses(): Observable<Expense[]> {
     return this.http.get<Expense[]>(this.expensesUrl)
     .pipe(
-      //map((inc) => inc.forEach((a) =>  parseInt(a.amount))),
-       //tap(_ => this.log('fetched expenses')),
+      map(response => {  // NOTE: response is of type SomeType
+        return response; // kind of useless
+    }),
+       // tap(_ => this.log('fetched expenses')),
       catchError(this.handleError('getExpenses', []))
     );
   }
@@ -31,7 +33,7 @@ export class ExpenseService {
   getExpense(id: number): Observable<Expense> {
     const url = `${this.expensesUrl}/${id}`;
     return this.http.get<Expense>(url).pipe(
-      //tap(_ => this.log(`fetched expense id=${id}`)),
+      // tap(_ => this.log(`fetched expense id=${id}`)),
       catchError(this.handleError<Expense>(`getExpense id=${id}`))
     );
   }
@@ -39,7 +41,7 @@ export class ExpenseService {
   /** PUT: update the hero on the server */
   updateExpense (expense: Expense): Observable<any> {
     return this.http.put(this.expensesUrl, expense, httpOptions).pipe(
-      //tap(_ => this.log(`updated expense id=${expense.id}`)),
+      // tap(_ => this.log(`updated expense id=${expense.id}`)),
       catchError(this.handleError<any>('updateExpense'))
     );
   }
@@ -47,7 +49,7 @@ export class ExpenseService {
   /** POST: add a new hero to the server */
   addExpense (expense: Expense): Observable<Expense> {
     return this.http.post<Expense>(this.expensesUrl, expense, httpOptions).pipe(
-      //tap((newExpense: Expense) => this.log(`added expense w/ id=${newExpense.id}`)),
+      // tap((newExpense: Expense) => this.log(`added expense w/ id=${newExpense.id}`)),
       catchError(this.handleError<Expense>('addExpense'))
     );
   }
@@ -58,7 +60,7 @@ export class ExpenseService {
     const url = `${this.expensesUrl}/${id}`;
 
     return this.http.delete<Expense>(url, httpOptions).pipe(
-      //tap(_ => this.log(`deleted expense id=${id}`)),
+      // tap(_ => this.log(`deleted expense id=${id}`)),
       catchError(this.handleError<Expense>('deleteExpense'))
     );
   }
@@ -70,7 +72,7 @@ export class ExpenseService {
       return of([]);
     }
     return this.http.get<Expense[]>(`${this.expensesUrl}/?title=${term}`).pipe(
-      //tap(_ => this.log(`found expenses matching "${term}"`)),
+      // tap(_ => this.log(`found expenses matching "${term}"`)),
       catchError(this.handleError<Expense[]>('searchExpenses', []))
     );
   }

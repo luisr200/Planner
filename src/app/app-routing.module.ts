@@ -4,12 +4,14 @@ import {ExpensesComponent} from './expense/expenses.component';
 import {ExpenseComponent} from './expense/expense.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import { IncomesComponent } from './incomes/incomes.component';
+import { IncomeComponent } from './income/income.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'expense/:id', component: ExpenseComponent },
   { path: 'expense', component: ExpensesComponent },
   { path: 'income', component: IncomesComponent },
+  { path: 'income/:id', component: IncomeComponent },
   { path: 'dashboard', component: DashboardComponent }
 ];
 

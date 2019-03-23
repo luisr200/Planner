@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Income } from '../Income'
+import { Income } from '../Income';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of, empty } from 'rxjs';
 import { MessageService } from './message.service';
@@ -15,11 +15,19 @@ const httpOptions = {
 
 export class IncomeService {
 
-  private incomesUrl = 'https://nzzdpl7p63.execute-api.us-west-2.amazonaws.com/Stage/Income';  // URL to web api
+  private incomesUrl = 'https://czjhugs2u1.execute-api.us-west-2.amazonaws.com/test/income';  // URL to web api
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   getIncomes(): Observable<Income[]> {
+    /* const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'email': 'luisr200@msn.com',
+        "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, email"
+      })
+    } */
     return this.http.get<Income[]>(this.incomesUrl)
     .pipe(
       catchError(this.handleError('getIncomes', []))
@@ -29,7 +37,7 @@ export class IncomeService {
   getIncome(id: number): Observable<Income> {
     const url = `${this.incomesUrl}/${id}`;
     return this.http.get<Income>(url).pipe(
-      //tap(_ => this.log(`fetched Income id=${id}`)),
+      // tap(_ => this.log(`fetched Income id=${id}`)),
       catchError(this.handleError<Income>(`getIncome id=${id}`))
     );
   }
@@ -37,7 +45,7 @@ export class IncomeService {
   /** PUT: update the hero on the server */
   updateIncome (income: Income): Observable<any> {
     return this.http.put(this.incomesUrl, income, httpOptions).pipe(
-      //tap(_ => this.log(`updated Income id=${Income.id}`)),
+      // tap(_ => this.log(`updated Income id=${Income.id}`)),
       catchError(this.handleError<any>('updateIncome'))
     );
   }
@@ -45,7 +53,7 @@ export class IncomeService {
   /** POST: add a new hero to the server */
   addIncome (income: Income): Observable<Income> {
     return this.http.post<Income>(this.incomesUrl, income, httpOptions).pipe(
-      //tap((newIncome: Income) => this.log(`added Income w/ id=${newIncome.id}`)),
+      // tap((newIncome: Income) => this.log(`added Income w/ id=${newIncome.id}`)),
       catchError(this.handleError<Income>('addIncome'))
     );
   }
@@ -55,8 +63,8 @@ export class IncomeService {
     const id = typeof income === 'number' ? income : income.id;
     const url = `${this.incomesUrl}/${id}`;
 
-    return this.http.delete<Income>(url, httpOptions).pipe(
-      //tap(_ => this.log(`deleted Income id=${id}`)),
+    return this.http.delete<Income>(url).pipe(
+      // tap(_ => this.log(`deleted Income id=${id}`)),
       catchError(this.handleError<Income>('deleteIncome'))
     );
   }
@@ -68,7 +76,7 @@ export class IncomeService {
       return of([]);
     }
     return this.http.get<Income[]>(`${this.incomesUrl}/?title=${term}`).pipe(
-      //tap(_ => this.log(`found Incomes matching "${term}"`)),
+      // tap(_ => this.log(`found Incomes matching "${term}"`)),
       catchError(this.handleError<Income[]>('searchIncomes', []))
     );
   }

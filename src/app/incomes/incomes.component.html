@@ -3,22 +3,41 @@
   <table class="table">
     <thead>
       <tr>
+          <th scope="col">Id</th>
         <th scope="col">Title</th>
         <th scope="col">Amount</th>
         <th scope="col">Currency</th>
         <th scope="col">Date</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of incomes">
+        <td>{{item.id}}</td>
         <td>{{item.title}}</td>
         <td>{{item.amount}}</td>
         <td>{{item.currency}}</td>
         <td>{{item.dateCreated}}</td>
+        <button class="btn btn-danger delete" title="delete income" (click)="delete(item)">x</button>
       </tr>
       <tr>
         <td>Total: {{incomeSum}}</td>
       </tr>
     </tbody>
   </table>
+  <div>
+      <label>Income title:
+        <input #incomeTitle />
+      </label>
+      <label>Income amount:
+        <input #incomeAmount />
+      </label>
+      <label>income type:
+        <input #incomeType />
+      </label>
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button (click)="add(incomeTitle.value,incomeAmount.value,incomeType.value); incomeTitle.value='';incomeAmount.value='';incomeType.value=''">
+        add
+      </button>
+    </div>
 </div>

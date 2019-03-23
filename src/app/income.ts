@@ -1,8 +1,8 @@
 import { NumberSymbol } from '@angular/common';
 
 export class Income{
-    id: number;
-    amount: number;
+    id: string;
+    amount: string;
     title: string;
     type: string;
     currency: string;

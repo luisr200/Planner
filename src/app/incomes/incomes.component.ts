@@ -12,6 +12,7 @@ export class IncomesComponent implements OnInit {
   incomes: Income[];
   incomeService: IncomeService;
   incomeSum: number;
+  myDate = new Date();
   constructor(incomeService: IncomeService) {
     this.incomeService = incomeService;
   }
@@ -29,8 +30,23 @@ export class IncomesComponent implements OnInit {
   }
 
   getSum(): void {
-    this.incomeSum = this.incomes.reduce((prev, curr) => prev + curr.amount, 0);
-    //this.incomes.forEach((i) => { this.incomeSum += i.amount; });
+    this.incomeSum = this.incomes.reduce((prev, curr) => prev + Number(curr.amount), 0);
+    // this.incomes.forEach((i) => { this.incomeSum += i.amount; });
+  }
+
+  delete(id: Income | number): void {
+    this.incomes = this.incomes.filter(e => e !== id);
+    this.incomeService.deleteIncome(id).subscribe();
+  }
+
+  add(title: string, amount: string, type: string): void {
+    title = title.trim();
+    type = type.trim();
+    if (!title || !type) { return; }
+    this.incomeService.addIncome({ title, amount, type, id : "5", email:"luisrb200@gmail.com", dateCreated:this.myDate.toString(), currency:"USD" } as Income)
+      .subscribe(income => {
+        this.incomes.push(income);
+    });
   }
 
 }

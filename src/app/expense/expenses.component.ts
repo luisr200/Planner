@@ -18,7 +18,7 @@ export class ExpensesComponent implements OnInit {
         this.getHeroes();
     }
 
-    getHeroes(): void{
+    getHeroes(): void {
         this.expenseService.getExpenses()
         .subscribe(expenses => this.expenses = expenses);
     }
